@@ -1,0 +1,50 @@
+// flip classes
+.flip-container {
+  .perspective(1000px);
+  .transform-style(preserve-3d);
+
+  .front, .back {
+    .backface-visibility(hidden);
+    .rotateY(-0deg);
+    .transition(0.6s);
+    .transform-style(preserve-3d);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .front {
+    .rotateY(0deg);
+    z-index: 2;
+  }
+
+  .back {
+    .rotateY(-180deg);
+  }
+
+
+  .flipper {
+    .transition(0.6s);
+    .transform-style(preserve-3d);
+    position: relative;
+  }
+}
+
+/* START: Accommodating for IE */
+.flip-container.hover .back {
+  .rotateY(0deg);
+}
+
+.flip-container.hover .front {
+  .rotateY(180deg);
+}
+/* END: Accommodating for IE */
+
+.flip-container, .front, .back {
+  width: 100%;
+
+  .btn {
+    .no-transform();
+    .backface-visibility(visible);
+  }
+}

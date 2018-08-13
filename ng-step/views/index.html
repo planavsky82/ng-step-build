@@ -1,0 +1,49 @@
+<div class="planavsky-ng-step">
+    <a id="ng-step-top"></a>
+
+    <div class="ng-step-container">
+        <div class="ng-step-status-bar"
+             data-ng-show="vm.displayProgressBar">
+            <div class="ng-step-status-bar-fill"></div>
+        </div>
+
+        <div id="ng-step-content-pane-{{ $index }}"
+             class="ng-step-content-pane"
+             data-ng-repeat="item in vm.items">
+
+            <div ui-view="{{ item.uiView }}"></div>
+
+        </div>
+    </div>
+
+    <div class="ng-step-navigation"
+         data-ng-if="vm.displayButtons">
+        <button data-ng-if="vm.activeId !== 0"
+                data-ng-click="vm.navigate('previous')">
+            <i class="fa fa-chevron-left"></i>
+            Previous
+        </button>
+        <button data-ng-if="vm.activeId !== vm.lastId"
+                data-ng-click="vm.navigate('next')">
+            Next
+            <i class="fa fa-chevron-right"></i>
+        </button>
+
+        <div class="ng-step-token"
+             data-ng-if="vm.displayToken">
+            <div class="flip-container" id="flip-toggle-token">
+                <div class="flipper">
+                    <div class="front loaded">
+                        <i class="fa {{ vm.icon1 }}"></i>
+                        <div>{{ vm.desc1 }}</div>
+                    </div>
+                    <div class="back">
+                        <i class="fa {{ vm.icon2 }}"></i>
+                        <div>{{ vm.desc2 }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
